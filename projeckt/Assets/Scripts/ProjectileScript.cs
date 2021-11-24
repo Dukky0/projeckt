@@ -12,6 +12,8 @@ public class ProjectileScript : MonoBehaviour {
     private Vector3 target;
     private Vector2 screenBounds;
 
+    bool hit;
+
     // Start is called before the first frame update
     void Start() {
         Cursor.visible = false;
@@ -31,6 +33,10 @@ public class ProjectileScript : MonoBehaviour {
             direction.Normalize();
             fireBullet(direction, rotationZ);
         }
+
+        if (hit == true) {
+            Destroy(bullet.gameObject);
+        }
     }
 
     void fireBullet(Vector2 direction, float rotationZ) {
@@ -39,5 +45,11 @@ public class ProjectileScript : MonoBehaviour {
         b.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
         Destroy(b.gameObject, 2.0f);
         b.tag = "bullet";
+    }
+
+    void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.tag == "enemy") {
+            hit = true;
+        }
     }
 }
