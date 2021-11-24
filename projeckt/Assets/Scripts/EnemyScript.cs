@@ -28,8 +28,8 @@ public class EnemyScript : MonoBehaviour {
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.tag == "bullet") {
+    void OnTriggerEnter2D(Collider2D trigger) {
+        if (trigger.gameObject.tag == "bullet") {
             bulletHit = true;
         }
     }
