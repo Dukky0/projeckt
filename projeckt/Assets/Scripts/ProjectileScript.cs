@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectileScript : MonoBehaviour {
-    public GameObject bulletPrefab;
+    public GameObject bullet;
     public GameObject crosshairs;
     public GameObject playerObject;
 
-    public float bulletSpeed = 60.0f;
+    public float bulletSpeed = 50.0f;
 
     private Vector3 target;
+    private Vector2 screenBounds;
 
     // Start is called before the first frame update
     void Start() {
@@ -30,13 +31,13 @@ public class ProjectileScript : MonoBehaviour {
             direction.Normalize();
             fireBullet(direction, rotationZ);
         }
-
     }
 
     void fireBullet(Vector2 direction, float rotationZ) {
-        GameObject b = Instantiate(bulletPrefab) as GameObject;
+        GameObject b = Instantiate(bullet) as GameObject;
         b.transform.position = playerObject.transform.position;
         b.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
+        Destroy(b.gameObject, 2.0f);
+        b.tag = "bullet";
     }
-
 }

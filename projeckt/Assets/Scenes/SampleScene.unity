@@ -162,10 +162,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e4e6da74ba4794e9f4e1a2cbb39d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 8211262424642820653, guid: 1e783564ec0661a4491b6b621fa70d9c, type: 3}
+  bullet: {fileID: 943486665464693007, guid: 45f4fe1d9b687ed40a99d909a92cfb78, type: 3}
   crosshairs: {fileID: 1139707655}
   playerObject: {fileID: 1228086321}
-  bulletSpeed: 60
+  bulletSpeed: 30
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -384,7 +384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1571591a0e23f264b9b0ffa85fc83119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.01
+  moveSpeed: 0.02
 --- !u!212 &1228086325
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -529,6 +529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469d4133d9a82404c893772def3eaa29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullet: {fileID: 0}
   player: {fileID: 1228086326}
   moveSpeed: 5
 --- !u!212 &1230072542

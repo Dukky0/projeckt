@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyScript : MonoBehaviour {
+    public GameObject bullet;
+
     public Transform player;
     public float moveSpeed = 5f;
     private Rigidbody2D rb;
     private Vector2 movement;
+    bool bulletHit;
 
     // Start is called before the first frame update
     void Start() {
         rb = this.GetComponent<Rigidbody2D>();
+        gameObject.tag = "enemy";
     }
 
     // Update is called once per frame
@@ -18,6 +22,16 @@ public class EnemyScript : MonoBehaviour {
         Vector3 direction = player.position - transform.position;
         direction.Normalize();
         movement = direction;
+
+        if (bulletHit == true) {
+            Destroy(this.gameObject);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.tag == "bullet") {
+            bulletHit = true;
+        }
     }
 
     void FixedUpdate() {
