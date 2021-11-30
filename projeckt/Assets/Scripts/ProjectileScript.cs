@@ -50,6 +50,7 @@ public class ProjectileScript : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.tag == "enemy") {
             hit = true;
+            //the collision detection is currently asking for if the camera were to colide with game tag enemy, need to change for bullet collide game tag enemy
         }
     }
 }
